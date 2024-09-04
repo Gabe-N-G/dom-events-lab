@@ -34,21 +34,39 @@ let solution =  ""
     }
   
     // Example
-    if (event.target.innerText === '*') {
+    if (event.target.classList.contains('operator')) {
       // Do something with this operator
-      operator = "*"
+      console.log("ya clicked me")
+      operator = event.target.innerText
       display.innertext = ""
-    //   console.log(operator)
+      console.log(operator)
     } 
     if (event.target.innerText === '=') {
         if (operator === '*'){
             solution = nums[0] * nums [1]
             display.innerText = solution
         }
-        nums = 
+        if (operator === '-'){
+            solution = nums[0] - nums [1]
+            display.innerText = solution
+        }
+        if (operator === '+'){
+            solution = nums[0] + nums [1]
+            display.innerText = solution
+        }
+        if (operator === '/'){
+            solution = nums[0] / nums [1]
+            display.innerText = solution
+        }
+        nums = []
         nums.push(solution)
     }
-
+    if (operator === "C"){
+        nums = []
+        operator = ""
+        solution = 0
+        display.innerText = solution
+    }
 
 
   });
