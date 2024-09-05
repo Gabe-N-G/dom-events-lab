@@ -21,23 +21,22 @@ let solution =  ""
 //       // Future logic to capture the button's value would go here...
 //     });
 //   });
+// I didn't do it this way, but it's good to save
 
   calculator.addEventListener('click', (event) => {
     // This log is for testing purposes to verify we're getting the correct value
     // You have to click a button to see this log
     console.log(event.target.innerText);
   
-    // Example
     if (event.target.classList.contains('number')) {
       // Do something with a number
       nums.push(event.target.innerText)
       console.log(nums)
       nums.forEach((num) => {displayNum += num}) //since we are saving the numbers as strings, this is just appending number strings to each other i.e. "1" + "2" = 12
-      nums = [] //clears array (might be a better way to work this?)
+      nums = [] //clears array (might be a better way to work this?, if I don't do this hitting a number would do unintended behavior)
       display.innerText = displayNum
     }
   
-    // Example
     if (event.target.classList.contains('operator')) {
       // Do something with this operator
     //   console.log("ya clicked me")
