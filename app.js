@@ -30,11 +30,10 @@ let solution =  ""
     // Example
     if (event.target.classList.contains('number')) {
       // Do something with a number
-    //   display.innerText = event.target.innerText
       nums.push(event.target.innerText)
       console.log(nums)
-      nums.forEach((num) => {displayNum += num})
-      nums = []
+      nums.forEach((num) => {displayNum += num}) //since we are saving the numbers as strings, this is just appending number strings to each other i.e. "1" + "2" = 12
+      nums = [] //clears array (might be a better way to work this?)
       display.innerText = displayNum
     }
   
@@ -45,11 +44,9 @@ let solution =  ""
       operator = event.target.innerText
       display.innertext = ""
       console.log(operator)
-      savedNum = Number(displayNum)
+      savedNum = Number(displayNum) //converts the display to a saved number that is a number.
       console.log(savedNum)
       displayNum = ""
-    //   nums.forEach((num) => {savedNums += num})
-    //   console.log (savedNums)
     } 
     if (event.target.innerText === '=') {
         if (operator === '*'){
@@ -69,9 +66,11 @@ let solution =  ""
             display.innerText = solution
         }
         nums = []
-        // nums.push(solution)
+        displayNum = solution //this allows for repeat operations
+        operator = "" //clear the operator so = doesn't do same operation twice.
     }
     if (operator === "C"){
+        //I dunno dude just clear all the variables
         nums = []
         operator = ""
         displayNum = ""
