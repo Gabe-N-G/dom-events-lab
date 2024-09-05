@@ -7,6 +7,8 @@ const display = document.querySelector('.display')
 
 /*-------------------------------- Variables --------------------------------*/
 let nums = []
+let displayNum = ""
+let savedNum = 0
 let operator = ""
 let solution =  ""
 /*------------------------ Cached Element References ------------------------*/
@@ -28,42 +30,52 @@ let solution =  ""
     // Example
     if (event.target.classList.contains('number')) {
       // Do something with a number
-      display.innerText = event.target.innerText
+    //   display.innerText = event.target.innerText
       nums.push(event.target.innerText)
-      console.log(nums) 
+      console.log(nums)
+      nums.forEach((num) => {displayNum += num})
+      nums = []
+      display.innerText = displayNum
     }
   
     // Example
     if (event.target.classList.contains('operator')) {
       // Do something with this operator
-      console.log("ya clicked me")
+    //   console.log("ya clicked me")
       operator = event.target.innerText
       display.innertext = ""
       console.log(operator)
+      savedNum = Number(displayNum)
+      console.log(savedNum)
+      displayNum = ""
+    //   nums.forEach((num) => {savedNums += num})
+    //   console.log (savedNums)
     } 
     if (event.target.innerText === '=') {
         if (operator === '*'){
-            solution = nums[0] * nums [1]
+            solution = savedNum * Number(displayNum)
             display.innerText = solution
         }
         if (operator === '-'){
-            solution = nums[0] - nums [1]
+            solution = savedNum - Number(displayNum)
             display.innerText = solution
         }
         if (operator === '+'){
-            solution = nums[0] + nums [1]
+            solution = savedNum + Number(displayNum)
             display.innerText = solution
         }
         if (operator === '/'){
-            solution = nums[0] / nums [1]
+            solution = savedNum / Number(displayNum)
             display.innerText = solution
         }
         nums = []
-        nums.push(solution)
+        // nums.push(solution)
     }
     if (operator === "C"){
         nums = []
         operator = ""
+        displayNum = ""
+        savedNum = 0
         solution = 0
         display.innerText = solution
     }
